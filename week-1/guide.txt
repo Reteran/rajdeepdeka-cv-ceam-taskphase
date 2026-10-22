@@ -1,0 +1,37 @@
+Assignment: Pure Python Image Processor
+
+Goal: Build a small image processor using only core Python. An image is just a grid of numbers, and your job is to write the functions that manipulate it. This is the same idea behind the libraries you'll use later, and it's the groundwork for vehicle perception systems like lane and obstacle detection.
+
+Note: the libraries listed below are your general setup for the program. For THIS assignment, NumPy, OpenCV, and Pillow are not allowed. Write the logic yourself in plain Python.
+
+1. SOFTWARE & ENVIRONMENT REQUIREMENTS
+Set up the following core environment:
+- Operating System: Ubuntu 22.04 (virtual machine or dual boot; no WSL)
+- Runtime: Python 3.10+
+- Core Libraries: NumPy, OpenCV (opencv-python), PyTorch, Torchvision
+- Specialized Libs: Ultralytics (YOLOv8), segmentation-models-pytorch
+- Version Control: Git, GitHub CLI (gh)
+- IDE / Editor: Visual Studio Code (with Python & Remote-SSH extensions)
+
+2. CURATED LEARNING RESOURCES (WEEK-BY-WEEK)
+WEEK 1: Python, Linux CLI & Git Mechanics
+[Video] "The Missing Semester of Your CS Education" - MIT (Shell & Git)
+[Guide] The Odin Project - Git Basics
+[Guide, optional] "Visualizing NumPy Arrays" by Jay Alammar. Read this AFTER you finish the assignment, to see what NumPy does for you that you just did by hand.
+
+3. WHAT TO BUILD (in this order)
+4. Represent a small grayscale image as a 2D grid of values from 0 to 255. Start tiny (around 5x5) so you can check everything by eye.
+5. Implement at least three pixel-wise operations (for example: invert, brightness adjustment, thresholding).
+6. Implement at least two geometric operations (for example: flip, rotate, crop).
+7. Implement at least one neighborhood operation using a small kernel (for example: blur or edge detection). Decide how you will handle the image borders and explain your choice.
+8. Bonus: extend to color (RGB) images, or load a simple image format such as PPM by hand.
+
+4. REQUIREMENTS
+- Each operation is its own function that takes an image in and returns a new one without modifying the original.
+- Print terminal output showing the image before and after each operation, so a reader can verify it without running your code.
+- Add a short README explaining what each function does and what the output shows.
+- Put it in a GitHub repo.
+
+Deadline: 19th october Monday , Presentations will be on wednesday
+
+Questions are welcome, but try to get stuck on the logic first. Working out the approach yourself is the point of the assignment.
