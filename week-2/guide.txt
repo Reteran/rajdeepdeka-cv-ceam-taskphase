@@ -1,0 +1,47 @@
+Assignment: Classical Computer Vision & Lane Line Extractor
+
+Goal: Build a lane line extractor using OpenCV. You will process static road images to isolate highway lane lines using classical computer vision techniques, laying the groundwork for perception systems.
+
+WHAT TO BUILD (in this order):
+
+1. Load and process static road images using OpenCV.
+
+
+2. Implement HSV color space transformations for robust color filtering.
+
+
+3. Apply Gaussian blur to reduce image noise.
+
+
+4. Apply Canny edge detection to identify lane boundaries.
+
+
+5. Apply Region of Interest (ROI) masking to isolate the road area.
+
+
+
+REQUIREMENTS:
+
+* Implement the processing pipeline in a clean Python script.
+
+
+* Push your complete script to your personal GitHub repository.
+
+
+* Include a README.md file featuring embedded screenshots that demonstrate your successfully extracted lane lines on static road images.
+
+
+
+DEADLINE:
+
+* Submission: Monday 26/10/2026
+
+CURATED RESOURCES:
+
+* FreeCodeCamp: OpenCV Course - Full Tutorial for Beginners
+
+
+* Towards Data Science: Canny Edge Detection Step-by-Step in Python
+
+
+* OpenCV Docs: Official Image Processing Tutorials

@@ -1,0 +1,36 @@
+Week 3 Task Briefing: Classical Tracking & Features
+Core Objective
+Move beyond deep learning inference to master foundational computer vision techniques, focusing on geometric feature extraction, key point matching, and sparse optical flow estimation to track vehicles across video streams.   
+PNG
+
+Key Technical Concepts
+Feature Detection & Description (ORB / SIFT):   
+PNG
+
+SIFT (Scale-Invariant Feature Transform): Detects scale- and rotation-invariant keypoints using difference-of-gaussians and generates robust gradient-based descriptors.
+
+ORB (Oriented FAST and Rotated BRIEF): A faster, rotation-aware, and scale-space-tolerant binary feature detector well-suited for real-time edge applications.
+
+Feature Matching & Verification:   
+PNG
+
+Establish correspondence between key points across consecutive video frames using distance metrics (e.g., Hamming distance for ORB, L2 norm for SIFT).
+
+Apply filtering techniques like Lowe's ratio test or RANSAC to eliminate outlier matches and erroneous vectors.
+
+Lucas-Kanade Optical Flow:   
+PNG
+
+Compute sparse optical flow to track movement vectors of localized feature points under the assumption of constant pixel intensity in a local neighborhood.
+
+Hands-on Deliverable: Vehicle Motion Tracker
+Video Processor Implementation: Build a Python script (using OpenCV) that ingests a video feed, detects vehicles, and tracks their displacement frame-by-frame using classical tracking or optical flow techniques.   
+PNG
+
+Documentation & Proof: Generate a clear visual demonstration of your tracker in action, convert it into an animated GIF, and embed the proof directly within the repository's README.md file.   
+PNG
+
+Deadlines & Reporting Action Items
+Submission Deadline: November 2nd, 2026
+
+Progress Report Required: Please fill out and submit the progress report covering your work for the past 2 weeks.

@@ -13,7 +13,7 @@ height = 0
 maxval = 0
 
 # PGM filereader
-filename = "casablanca"
+filename = "gator"
 with open(f'pgm-files/{filename}.pgm') as f:
     c = 0
     single_list = []
@@ -165,7 +165,6 @@ def apply_pad(img, n):
 
     return pad_img
 
-
 def blur(img, n):
     if(n%2==0):
         print("\n\n!! Enter an odd number for the kernel size !!")
@@ -258,17 +257,17 @@ while True:
             image = copy.deepcopy(ogimage)
             pgmimage = copy.deepcopy(ogpgm)
         case 1 | 2:
-            change_brightness(image, choice)
+            change_brightness(pgmimage, choice)
         case 3:
             print("Enter the threshold value:", end=' ')
             value = int(input())
-            threshold(image, value)
+            threshold(pgmimage, value)
         case 4:
             print("\nH for horizontal flip\nV for vertical flip")
             c = input()
-            flip(image, c)
+            flip(pgmimage, c)
         case 5:
-            image = rotate(image)
+            pgmimage = rotate(pgmimage)
         case 6:
             print("Enter the kernel size (odd numbers only):")
             c = int(input())
@@ -276,7 +275,7 @@ while True:
         case 7:
             edge(pgmimage, 3)
         case 8:
-            invert(image)
+            invert(pgmimage)
         case 9:
             blurred = blur(pgmimage, 3)
             thresh = threshold(blurred, 150)
