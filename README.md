@@ -1,4 +1,4 @@
-# rajdeepdeka-ceam-cv-taskphase
+# CV taskphase
 ## week 1
 The script improc.py outputs a menu showing the current state of the image and several options.
 
