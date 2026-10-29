@@ -1,9 +1,9 @@
 import cv2 as cv
 import numpy as np
  
-path = "videos/driving-test/driving/08.mp4"
+path = "videos/driving-test/driving/o7.mp4"
 
-cap = cv.VideoCapture(0)
+cap = cv.VideoCapture(path)
 
 if not cap.isOpened():
     print("Error: Could not open video file.")
@@ -20,7 +20,7 @@ prev_keys = None
 prev_des = None
 prev_gray = None
 
-orb = cv.ORB_create(nfeatures=1500)
+orb = cv.ORB_create(nfeatures=500)
 bf = cv.BFMatcher(cv.NORM_HAMMING)
 
 MIN_MATCH_COUNT = 10
@@ -36,7 +36,10 @@ while True:
     keys, des = orb.detectAndCompute(gray, None)
 
     if prev is not None and prev_keys is not None and prev_des is not None:
-        matches = bf.knnMatch(prev_des, des, k=2)
+        matches = bf.knnMatch(prev_des, des, k=2)   # matches is a list of DMatch objects
+                                                    # where DMatch is a class for matching 
+                                                    # keypoints descriptors
+
         good = []
 
         for m in matches:
@@ -79,6 +82,7 @@ while True:
                             # matchesMask=matchesMask, this line is only for if we don't filter good using the list comprehension and still want to display using a matchesMask = mask.ravel().tolist()
                             flags = 2)
         match_frame = cv.drawMatches(prev, prev_keys, vis, keys, inliers, None, **draw_params)
+        cv.namedWindow("feature matching", cv.WINDOW_NORMAL)
         cv.imshow("feature matching", match_frame)
 
     prev = frame
@@ -99,4 +103,4 @@ cv.destroyAllWindows()
 # https://docs.opencv.org/4.13.0/dc/dc3/tutorial_py_matcher.html
 # https://www.geeksforgeeks.org/python/feature-matching-using-orb-algorithm-in-python-opencv/
 # https://docs.opencv.org/3.4.20/d1/de0/tutorial_py_feature_homography.html
-# https://docs.opencv.org/3.4.20/d5/d6f/tutorial_feature_flann_matcher.html
+# https://docs.opencv.org/3.4.20/d4/dee/tutorial_optical_flow.html
