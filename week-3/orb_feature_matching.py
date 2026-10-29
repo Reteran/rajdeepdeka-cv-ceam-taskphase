@@ -1,9 +1,9 @@
 import cv2 as cv
 import numpy as np
  
-path = "videos/driving-test/driving/o9.mp4"
+path = "videos/driving-test/driving/08.mp4"
 
-cap = cv.VideoCapture(path)
+cap = cv.VideoCapture(0)
 
 if not cap.isOpened():
     print("Error: Could not open video file.")
@@ -20,7 +20,7 @@ prev_keys = None
 prev_des = None
 prev_gray = None
 
-orb = cv.ORB_create()
+orb = cv.ORB_create(nfeatures=1500)
 bf = cv.BFMatcher(cv.NORM_HAMMING)
 
 MIN_MATCH_COUNT = 10
@@ -40,27 +40,46 @@ while True:
         good = []
 
         for m in matches:
+            '''
+            Values which pass the Lowe's Ratio test get appended to good
+            '''
             if len(m) == 2 and m[0].distance < 0.7 * m[1].distance:
                 good.append(m[0])
 
+        matchesMask = None
         if len(good) > MIN_MATCH_COUNT: # if there are enough matches...
             src = np.float32([prev_keys[m.queryIdx].pt for m in good]).reshape(-1,1,2)
             dst = np.float32([keys[m.trainIdx].pt for m in good]).reshape(-1,1,2)
 
             M, mask = cv.findHomography(src, dst, cv.RANSAC, 3.0)
-            if mask is not None:
-                good =[m for m, keep in zip(good, mask.ravel()) if keep]
 
-            # frame = cv.polylines(frame, [np.int32(dst)], True, 255, 3, cv.LINE_AA)
+            if mask is not None and M is not None:
+                '''
+                This is essentially just a bitmasking for further refining in the good list.
+                mask.ravel() turns mask into a 1d array, which has one entry per input match, 
+                according to RANSAC. 1 means the match is an inlier and 0 means it is an outlier.
+                we are turning the mask into a 1d array and only retaining those values of good
+                which correspond to a 1 (inlier) in the mask.
+                '''
+                inliers = [m for m, keep in zip(good, mask.ravel()) if keep] 
+                outliers = [m for m, keep in zip(good, mask.ravel()) if not keep]
+            else:
+                inliers = []
+                outliers = good
 
-        match_frame = cv.drawMatches(prev, prev_keys, frame, keys, good, None, flags=cv.DrawMatchesFlags_NOT_DRAW_SINGLE_POINTS)
+            h,w = prev.shape[:2]
+            pts = np.float32([ [0,0],[0,h-1],[w-1,h-1],[w-1,0] ]).reshape(-1,1,2)
+            outline = cv.perspectiveTransform(pts, M)
 
+            vis = frame.copy()
+            cv.polylines(vis, [np.int32(outline)], True, (0,0,255), 5)
 
-
+        draw_params = dict(matchColor = (0,0,255),
+                            singlePointColor=None,
+                            # matchesMask=matchesMask, this line is only for if we don't filter good using the list comprehension and still want to display using a matchesMask = mask.ravel().tolist()
+                            flags = 2)
+        match_frame = cv.drawMatches(prev, prev_keys, vis, keys, inliers, None, **draw_params)
         cv.imshow("feature matching", match_frame)
-
-    # frame2 = cv.drawKeypoints(frame, keypoints, None, color = (0,0,255), flags=0)
-    # cv.imshow("Video Frame", frame2)
 
     prev = frame
     prev_keys = keys
