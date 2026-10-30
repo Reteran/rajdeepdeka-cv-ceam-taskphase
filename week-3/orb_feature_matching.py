@@ -3,12 +3,10 @@ import numpy as np
  
 path = "videos/driving-test/driving/o7.mp4"
 
-cap = cv.VideoCapture(path)
+cap = cv.VideoCapture(0)
 
 if not cap.isOpened():
     print("Error: Could not open video file.")
-else:
-    print("Video file opened successfully.")
 
 # Get video properties (e.g., frame count and frame width)
 frame_count = int(cap.get(cv.CAP_PROP_FRAME_COUNT))  # Get total number of frames in the video
@@ -31,6 +29,8 @@ while True:
         print("End of video or error occurred.")
         break
 
+    photo = cv.imread("me.jpg")
+
     gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
 
     keys, des = orb.detectAndCompute(gray, None)
@@ -41,6 +41,7 @@ while True:
                                                     # keypoints descriptors
 
         good = []
+        inliers = []
 
         for m in matches:
             '''
@@ -59,7 +60,7 @@ while True:
             if mask is not None and M is not None:
                 '''
                 This is essentially just a bitmasking for further refining in the good list.
-                mask.ravel() turns mask into a 1d array, which has one entry per input match, 
+                mask.ravel() turns mask into a 1d array, which has one entry per input match,
                 according to RANSAC. 1 means the match is an inlier and 0 means it is an outlier.
                 we are turning the mask into a 1d array and only retaining those values of good
                 which correspond to a 1 (inlier) in the mask.
@@ -104,3 +105,4 @@ cv.destroyAllWindows()
 # https://www.geeksforgeeks.org/python/feature-matching-using-orb-algorithm-in-python-opencv/
 # https://docs.opencv.org/3.4.20/d1/de0/tutorial_py_feature_homography.html
 # https://docs.opencv.org/3.4.20/d4/dee/tutorial_optical_flow.html
+# https://www.youtube.com/watch?v=79Ty2Kkivvc

@@ -13,7 +13,7 @@ height = 0
 maxval = 0
 
 # PGM filereader
-filename = "gator"
+filename = "f14"
 with open(f'pgm-files/{filename}.pgm') as f:
     c = 0
     single_list = []
