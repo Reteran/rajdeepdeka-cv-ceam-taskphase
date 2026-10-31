@@ -11,9 +11,9 @@
 
 Gx = 
 
-     [ -1/4, 0, 1/4]
-     [ -2/4, 0, 2/4]
-     [ -1/4, 0, 1/4]
+     [ -1, 0, 1]
+     [ -2, 0, 2]
+     [ -1, 0, 1]
 
 * A PGM P2 filereader and writer, used in every function, for tangible outputs
 <img width="574" height="347" alt="image" src="https://github.com/user-attachments/assets/1feff581-5d14-41d9-b1d1-eae09bba0139" />
