@@ -22,7 +22,7 @@ Gx =
 
 The most challenging part was implementing the neighborhood operations, especially the padding function required for them, which took a lot of trial and error and changing of different parameters before I could get it to work. 
 
-An unexpected challenge was implementing the PGM filereader/writer. I had to make the code work its way through the formatting of the file and extract information from it like the dimensions, height and width and get a hang of whitespace handling string functions in python.
+An unexpected challenge was implementing the PGM filereader/writer. I had to make the code work its way through the formatting of the file and extract information from it like the height, width and max pixel intensity and get a hang of whitespace handling string functions in python.
 
 # Week 2: Lane Line Separator
 # Week 3: Classical Tracking and Feature Detection
