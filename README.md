@@ -24,5 +24,18 @@ The most challenging part was implementing the neighborhood operations, especial
 
 An unexpected challenge was implementing the PGM filereader/writer. I had to make the code work its way through the formatting of the file and extract information from it like the height, width and max pixel intensity and get a hang of whitespace handling string functions in python.
 
+<img width="639" height="484" alt="image" src="https://github.com/user-attachments/assets/8fd5b1c4-92ec-489e-9b9d-40792264d51d" />  
+
+Original image
+
+<img width="639" height="484" alt="image" src="https://github.com/user-attachments/assets/f81f6660-e528-4346-bc42-7b60e258cd68" />  
+
+Edge Detection
+
+<img width="640" height="477" alt="image" src="https://github.com/user-attachments/assets/a02d2ec3-97c6-4a67-96c6-efac6f076311" />  
+
+Thresholded image
+
+
 # Week 2: Lane Line Separator
 # Week 3: Classical Tracking and Feature Detection
