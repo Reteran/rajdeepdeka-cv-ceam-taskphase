@@ -53,11 +53,12 @@ Pipeline for the matcher:
                        -> knnMatch (Hamming, k=2) -> Lowe's ratio test
                        -> findHomography (RANSAC) -> inliers
 
-<img width="" height="" alt="image" src="" />  
+
+
+
+
 
 ORB matches (inliers only) with the warped frame outline
-
-<img width="" height="" alt="image" src="" />  
 
 Lucas-Kanade optical flow tracks
 
