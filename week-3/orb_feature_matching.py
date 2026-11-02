@@ -1,9 +1,9 @@
 import cv2 as cv
 import numpy as np
- 
+
 path = "videos/driving-test/driving/o7.mp4"
 
-cap = cv.VideoCapture(0)
+cap = cv.VideoCapture(path)
 
 if not cap.isOpened():
     print("Error: Could not open video file.")
@@ -28,8 +28,6 @@ while True:
     if not ret:
         print("End of video or error occurred.")
         break
-
-    photo = cv.imread("me.jpg")
 
     gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
 
